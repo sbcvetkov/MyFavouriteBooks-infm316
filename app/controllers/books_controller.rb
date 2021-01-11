@@ -39,17 +39,17 @@ end
   # default: render 'new' template
  end
 
- def create
-   params.require(:book)
-   permitted = params[:book].permit(:title,:genre,:isbn,:description,:publish_date,:author)
-   @book = Book.new(permitted)
-   if @book.save
-     flash[:notice] = "#{@book.title} was successfully created."
-     redirect_to books_path
-   else
-     render 'new' # note, 'new' template can access @book's field values!
-   end
- end
+  def create
+    params.require(:book)
+    permitted = params[:book].permit(:title,:genre,:publish_date,:isbn,:description,:author)
+    @book = Book.new(permitted)
+    if @book.save
+      flash[:notice] = "#{@book.title} was successfully created."
+      redirect_to books_path
+    else
+      render 'new' # note, 'new' template can access @book's field values!
+    end
+  end
 
   def edit
     @book = Book.find params[:id]
@@ -59,10 +59,14 @@ end
     @book = Book.find params[:id]
     params.require(:book)
     permitted = params[:book].permit(:title,:genre,:publish_date,:isbn,:description,:author)
-    @book.update_attributes!(permitted)
-    flash[:notice] = "#{@book.title} was successfully updated."
-    redirect_to book_path(@book)
+    if @book.update_attributes(permitted)
+      flash[:notice] = "#{@book.title} was successfully updated."
+      redirect_to book_path(@book)
+    else
+      render 'edit' # note, 'edit' template can access @book's field values!
+    end
   end
+
 
   def destroy
    @book = Book.find(params[:id])
