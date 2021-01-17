@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_01_10_142435) do
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "genre"
-    t.string "isbn"
+    t.string "isbn_number"
     t.text "description"
     t.datetime "publish_date"
     t.datetime "created_at", precision: 6, null: false

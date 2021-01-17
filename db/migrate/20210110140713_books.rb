@@ -3,7 +3,7 @@ class Books < ActiveRecord::Migration[6.0]
     create_table 'books' do |t|
       t.string   "title"
       t.string   "genre"
-      t.string   "isbn"
+      t.string   "isbn_number"
       t.text     "description"
       t.datetime "publish_date"
       # Add fields that let Rails automatically keep track

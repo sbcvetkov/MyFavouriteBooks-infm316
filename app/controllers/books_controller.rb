@@ -41,8 +41,9 @@ end
 
   def create
     params.require(:book)
-    permitted = params[:book].permit(:title,:genre,:publish_date,:isbn,:description,:author)
+    permitted = params[:book].permit(:title,:genre,:publish_date,:isbn_number,:description,:author)
     @book = Book.new(permitted)
+
     if @book.save
       flash[:notice] = "#{@book.title} was successfully created."
       redirect_to books_path
@@ -58,8 +59,8 @@ end
   def update
     @book = Book.find params[:id]
     params.require(:book)
-    permitted = params[:book].permit(:title,:genre,:publish_date,:isbn,:description,:author)
-    if @book.update_attributes(permitted)
+    permitted = params[:book].permit(:title,:genre,:publish_date,:isbn_number,:description,:author)
+    if @book.update(permitted)
       flash[:notice] = "#{@book.title} was successfully updated."
       redirect_to book_path(@book)
     else

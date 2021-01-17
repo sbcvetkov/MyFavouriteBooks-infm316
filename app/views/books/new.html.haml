@@ -14,14 +14,14 @@
   = label :book, :genre, 'Genre'
   = select :book, :genre, ['Science Fiction', 'Drama', 'Action and Adventure', 'Romance', 'Mystery', 'Horror']
 
-  = label :book, :isbn, 'ISBN'
-  = text_field :book, :isbn
+  = label :book, :isbn_number, 'ISBN'
+  = text_field :book, :isbn_number
 
   = label :description, :title, 'Description'
   = text_field :book, :description
 
   = label :book, :publish_date, 'Published On'
-  = date_select :book, :publish_date
+  = date_select :book, :publish_date, { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today}
 
   = label :book, :author, 'Author'
   = text_field :book, :author
