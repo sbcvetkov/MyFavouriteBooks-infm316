@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To run this project follow these steps:
+* bundle install
+* rails db:migrate && rails db:migrate RAILS_ENV=test
+* bundle exec cucumber
 
-Things you may want to cover:
+Built with:
+ruby 2.6.3p62 (2019-04-16 revision 67580) [universal.x86_64-darwin20]
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
